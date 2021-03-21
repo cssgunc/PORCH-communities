@@ -24,6 +24,8 @@ Resource (Windows): https://faq.programmerworld.net/web_publishing/apache_php.ht
 
 `DATABASE_PORT`: The port number of the mysql server (optional, defaults to 5432)
 
+`NODE_ENV`: `prod` for production environment, `dev` for local / development.
+
 
 You may add more environment variables if you would like. You can access them through process.env.ENV_VAR_NAME
 
