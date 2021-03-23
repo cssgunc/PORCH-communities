@@ -1,3 +1,5 @@
+// PORCH Communities Backend App
+
 const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
@@ -22,8 +24,14 @@ if (config) {
     app.use(morgan(config.logging));
 }
 
+// Setup middleware
 app.use(fileUpload());
 
-app.get('/', async function (req, res) {res.render('index.ejs');});
+// Define routes
+app.get('/', (req, res) => {
+    res.send('PORCH Communities App')
+});
+
+app.get('/')
 
 module.exports = app;
