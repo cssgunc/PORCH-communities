@@ -1,3 +1,7 @@
+if (!process.env.NODE_ENV) {
+    require("dotenv").config()
+}
+
 let dev = {
     mode: 'dev',
     logging: 'dev',
