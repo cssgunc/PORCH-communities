@@ -117,3 +117,5 @@ dist
 
 # Ignore text files
 *.txt
+
+.idea/
