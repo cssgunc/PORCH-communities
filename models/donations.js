@@ -2,29 +2,35 @@ const { v4: uuidv4 } = require("uuid"),
     Sequelize = require("sequelize");
 
 exports.init_table = function (sequelize) {
-    return sequelize.define('volunteers', {
+    return sequelize.define('donations', {
         id: {
             type: Sequelize.UUID,
             allowNull: false,
             unique: true,
             primaryKey: true,
         },
-        hoursWorked: {
-            type: Sequelize.DOUBLE,
+        donorId: {
+            type: Sequelize.UUID,
             allowNull: false,
-            defaultValue: '0'
         },
-        organization: {
+        volunteerId: {
+            type: Sequelize.UUID,
+            allowNull: false,
+        },
+        donationDate: {
+            type: Sequelize.DATE,
+            allowNull: false,
+        },
+        donationContent: {
             type: Sequelize.TEXT,
             allowNull: false,
         },
-        isRegistered: {
-            type: Sequelize.BOOLEAN,
+        donationPickedUp: {
+            type: Sequelize.ENUM('pickedUp', 'notPickedUp', 'pending', 'N/A'),
             allowNull: false,
-            // 0 is false
-            defaultValue: '0',
+            defaultValue: 'pending',
         },
-    }, {
+    },{
         timestamps: false,
         // MySQL recommends snake_case for fields
         // Sequelize recommends camelCase

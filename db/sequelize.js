@@ -48,7 +48,10 @@ sequelize.volunteers = Volunteers.init_table(sequelize);
 sequelize.donors = Donors.init_table(sequelize);
 sequelize.donations = Donations.init_table(sequelize);
 
-// TODO: DonorID is camelCase, change to snake_case?
-sequelize.donations.belongsTo(sequelize.donors, { foreignKey: 'Donor_ID' });
-sequelize.donations.belongsTo(sequelize.volunteers, { foreignKey: 'Volunteer_ID' });
+// The A.hasMany(B) association means that a One-To-Many relationship exists between
+// A and B, with the foreign key being defined in the target model (B).
+sequelize.donors.hasMany(sequelize.donations);
+sequelize.volunteers.hasMany(sequelize.donations);
+sequelize.donations.belongsTo(sequelize.donors, { foreignKey: 'donor_id' });
+sequelize.donations.belongsTo(sequelize.volunteers, { foreignKey: 'volunteer_id' });
 module.exports = sequelize;
