@@ -9,16 +9,20 @@ exports.init_table = function (sequelize) {
             unique: true,
             primaryKey: true,
         },
-        is_registered: {
+        isRegistered: {
           type: Sequelize.BOOLEAN,
           allowNull: false,
           defaultValue: false,
         },
-        donor_location: {
+        donorLocation: {
             type: Sequelize.TEXT,
             allowNull: false,
         },
     }, {
-      timestamps: false
+        timestamps: false,
+        // MySQL recommends snake_case for fields
+        // Sequelize recommends camelCase
+        // mapping camelCase to snake_case when generating SQL
+        underscored: true,
     })
 }
